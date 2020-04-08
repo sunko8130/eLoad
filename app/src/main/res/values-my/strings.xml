@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyKyat_TopUp</string>
+    <string name="information">သတင်းအချက်အလက်</string>
+    <string name="home">မူလ</string>
+    <string name="top_up">ဖုန်းငွေဖြည့်</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="image_view">imageView</string>
+    <string name="msg_not_yet_register">Not yet? Register</string>
+    <string name="msg_forgot_password">စကားဝှက်ကိုမေ့နေပါသလား</string>
+    <string name="msg_login">ဝင်ရန်</string>
+    <string name="login_name">အသုံးပြုသူအမည်</string>
+    <string name="password">လျှိဝှက်အမှတ်</string>
+    <string name="show_password">လျှို့ဝှက်စကားလုံး ကြည့်ရန်</string>
+    <string name="mpt">MPT</string>
+    <string name="ooredoo">Ooredoo</string>
+    <string name="telenol">Telenol</string>
+    <string name="mytel">Mytel</string>
+    <string name="phone_number">ဖုန်းနံပါတ်</string>
+    <string name="amt_1000">1,000</string>
+    <string name="amt_2000">2,000</string>
+    <string name="amt_3000">3,000</string>
+    <string name="amt_4000">4000</string>
+    <string name="amt_5000">5,000</string>
+    <string name="amount">ရရှိနိုင်သောဖုန်းငွေဖြည့်ငွေပမာဏ</string>
+    <string name="amt_10000">10,000</string>
+    <string name="msg_continue">ဆက်ရန်</string>
+    <string name="loading">Loading…</string>
+    <string name="ok">အိုကေ</string>
+    <string name="login_name_require">သင်၏ အသုံးပြုသူအမည်ဖြည့်ပါ</string>
+    <string name="login_password_require">သင်၏ လျှို့ဝှက်အမှတ်ဖြည့်ပါ</string>
+    <string name="transaction">ဖုန်းဘေအရောင်းစာရင်းများ</string>
+    <string name="user_name">Hi, %1$s</string>
+    <string name="user_balance">ငွေပမာဏ - %1$s ကျပ်</string>
+    <string name="amount_require_msg">ပမာဏကိုရွေးချယ်ပါ</string>
+    <string name="mobile_require_msg">ဖုန်းနံပါတ်ထည့်ပါ</string>
+    <string name="operator_require_msg">အော်ပရေတာကိုရွေးပါ</string>
+    <string name="top_up_mobile"><![CDATA[ဖုန်းနံပါတ်: <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="top_up_amount"><![CDATA[ငွေပမာဏကိုဖြည့်ပါ: <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
+    <string name="top_up_detect_amount"><![CDATA[<font color=#1E88E5>%1$s ကျပ်</font>ကို သင်၏ myKyat အကောင့်မှနှုတ်ယူလိမ့်မည်]]></string>
+    <string name="transaction_history">ဖုန်းဘေအရောင်းစာရင်းများ</string>
+    <string name="have_no_transaction">ဖုန်းဘေအရောင်းစာရင်းမရှိပါ</string>
+    <string name="transaction_provider"><![CDATA[<font color=#1E88E5>%1$s</font>]]></string>
+    <string name="transaction_mobile"><![CDATA[ဖုန်းနံပါတ် - <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="transaction_amount"><![CDATA[ငွေပမာဏ - <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
+    <string name="transaction_date"><![CDATA[ရက်စွဲ - <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="change_password">စကားဝှက်ကိုပြောင်းရန်</string>
+    <string name="current_password">လက်ရှိစကားဝှက်</string>
+    <string name="new_password">စကားဝှက်အသစ်</string>
+    <string name="confirm_password">စကားဝှက်ကိုအတည်ပြုပါ</string>
+    <string name="alert_curent_password">သင့်ရဲ့လက်ရှိစကားဝှက်ကိုရိုက်ထည့်ပါ</string>
+    <string name="alert_new_password">သင်၏စကားဝှက်အသစ်ကိုရိုက်ထည့်ပါ</string>
+    <string name="alert_confirm_password">သင်၏အတည်ပြုစကားဝှက်ကိုရိုက်ထည့်ပါ</string>
+    <string name="alert_password_matcher">စကားဝှက်သည်မကိုက်ညီပါ</string>
+    <string name="sucess_change_password">Password Change Successfully</string>
+    <string name="success_login">Login Successfully</string>
+    <string name="success_top_up">Top-Up Successfully</string>
+    <string name="success_logout">Logout Successfully</string>
+    <string name="logout">ထွက်ရန်</string>
+    <string name="invalid_mobile_no">မမှန်ကန်သောမိုဘိုင်းနံပါတ် …</string>
+    <string name="mobile_number">ဖုန်းနံပါတ်</string>
+    <string name="forgot_pass_title">စကားဝှက်ကိုမေ့နေပါသလား</string>
+    <string name="mobile_and_provider_not_match">ရွေးချယ်ထားသောအော်ပရေတာနှင့်မိုဘိုင်းနံပါတ်သည်မကိုက်ညီပါ</string>
+    <string name="change_language">ဘာသာစကားပြောင်းရန်</string>
+    <string name="myanmar">မြန်မာ</string>
+    <string name="english">English</string>
+    <string name="choose_language">ဘာသာစကားရွေးပါ</string>
+    <string name="require_password_rule">Note: password must contain at least 8 characters, including uppercase, lowercase letters and numbers</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="operator">Operator</string>
+    <string name="search">Search</string>
+    <string name="date_format">%1$d-%2$d-%3$d</string>
+    <string name="total_amount"><![CDATA[စုစုပေါင်း ရောင်းရငွေ - <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
+    <string name="total_commission"><![CDATA[စုစုပေါင်းကော်မရှင် - <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
+    <string name="date_compare">To Date သည် From Date ထက်ကြီးရမည်</string>
+    //top up available amount
+    <integer-array name="operator_list">
+        <item>1000</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </integer-array>
+</resources>

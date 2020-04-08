@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">MyKyat_TopUp</string>
+    <string name="information">Information</string>
+    <string name="home">Home</string>
+    <string name="top_up">Top Up</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="image_view">imageView</string>
+    <string name="msg_not_yet_register">Not yet? Register</string>
+    <string name="msg_forgot_password">Forgot Password?</string>
+    <string name="msg_login">Login</string>
+    <string name="login_name">Login Name</string>
+    <string name="password">Password</string>
+    <string name="show_password">Show Password</string>
+    <string name="mpt">MPT</string>
+    <string name="ooredoo">Ooredoo</string>
+    <string name="telenol">Telenol</string>
+    <string name="mytel">Mytel</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="amt_1000">1,000</string>
+    <string name="amt_2000">2,000</string>
+    <string name="amt_3000">3,000</string>
+    <string name="amt_4000">4000</string>
+    <string name="amt_5000">5,000</string>
+    <string name="amount">Available top up amount</string>
+    <string name="amt_10000">10,000</string>
+    <string name="msg_continue">Continue</string>
+    <string name="loading">Loading…</string>
+    <string name="ok">OK</string>
+    <string name="login_name_require">Fill your login name</string>
+    <string name="login_password_require">Fill your login password</string>
+    <string name="transaction">Transaction</string>
+    <string name="user_name">Hi, %1$s</string>
+    <string name="user_balance">Balance - %1$s Ks</string>
+
+    //available operator
+    <string-array name="operator_list">
+        <item>MPT</item>
+        <item>Ooredoo</item>
+        <item>Telenol</item>
+        <item>Mytel</item>
+    </string-array>
+
+    //language
+    <string-array name="language_list">
+        <item>Myanmar</item>
+        <item>English</item>
+    </string-array>
+    <integer-array name="language_image">
+        <item>@drawable/ic_mpt</item>
+        <item>@drawable/ic_mpt</item>
+    </integer-array>
+
+    <string name="amount_require_msg">Select Amount</string>
+    <string name="mobile_require_msg">Enter mobile number</string>
+    <string name="operator_require_msg">Select operator</string>
+    <string name="top_up_mobile"><![CDATA[Mobile No: <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="top_up_amount"><![CDATA[Top-Up Amount: <font color=#1E88E5>%1$s Ks</font>]]></string>
+    <string name="top_up_detect_amount"><![CDATA[<font color=#1E88E5>%1$s Ks</font> will be deducted from your myKyat account]]></string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="have_no_transaction">No Transaction</string>
+    <string name="transaction_provider"><![CDATA[<font color=#1E88E5>%1$s</font>]]></string>
+    <string name="transaction_mobile"><![CDATA[Mobile - <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="transaction_amount"><![CDATA[Amount - <font color=#1E88E5>%1$s Ks</font>]]></string>
+    <string name="transaction_date"><![CDATA[Date - <font color=#1E88E5>%1$s</font>]]></string>
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="alert_curent_password">Enter your current password</string>
+    <string name="alert_new_password">Enter your new password</string>
+    <string name="alert_confirm_password">Enter your confirm password</string>
+    <string name="alert_password_matcher">Password didn\'t match</string>
+    <string name="sucess_change_password">Password Change Successfully</string>
+    <string name="success_login">Login Successfully</string>
+    <string name="success_top_up">Top-Up Successfully</string>
+    <string name="success_logout">Logout Successfully</string>
+    <string name="logout">Logout</string>
+    <string name="invalid_mobile_no">Invalid mobile number…</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="forgot_pass_title">Forgot Password</string>
+    <string name="mobile_and_provider_not_match">Selected operator and mobile number didn\'t match</string>
+    <string name="change_language">Change Language</string>
+
+    <string name="myanmar">မြန်မာ</string>
+    <string name="english">English</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="require_password_rule">Note: password must contain at least 8 characters, including uppercase, lowercase letters and numbers</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="operator">Operator</string>
+    <string name="search">Search</string>
+    <string name="date_format">%1$d-%2$d-%3$d</string>
+
+    <string name="total_amount"><![CDATA[Total Sales - <font color=#1E88E5>%1$s Ks</font>]]></string>
+    <string name="total_commission"><![CDATA[Total Commission - <font color=#1E88E5>%1$s Ks</font>]]></string>
+    <string name="date_compare">To Date must be greater than From Date</string>
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.top_up.TopUpFragment">
+
+    <ImageView
+        android:id="@+id/iv_operator"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image_view"
+        android:src="@drawable/ic_mpt" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/top_up_ll_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <org.mmtextview.components.MMTextView
+            android:id="@+id/tv_mobile"
+            style="@style/pre_top_up_text_view"
+            tools:text="Mobile No" />
+
+        <org.mmtextview.components.MMTextView
+            android:id="@+id/tv_top_up_amount"
+            style="@style/pre_top_up_text_view"
+            tools:text="Mobile No" />
+
+        <org.mmtextview.components.MMTextView
+            android:id="@+id/tv_detect_amount"
+            style="@style/pre_top_up_text_view"
+            tools:text="Mobile No" />
+    </LinearLayout>
+
+    <org.mmtextview.components.MMButton
+        android:id="@+id/btn_continue"
+        style="@style/button_continue"
+        android:layout_width="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/msg_continue" />
+
+</LinearLayout>

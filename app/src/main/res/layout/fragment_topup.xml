@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.top_up.PreTopupFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <org.mmtextview.components.MMTextView
+                android:id="@+id/tv_user_name"
+                style="@style/textView"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                tools:text="Hi, Sun Ko" />
+
+            <org.mmtextview.components.MMTextView
+                android:id="@+id/tv_balance"
+                style="@style/textView"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                tools:text="balance - 20000" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/operator_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_stroke"
+            android:visibility="visible" />
+
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_stroke"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:stretchColumns="*"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/cb_mpt"
+                style="@style/radio"
+                android:text="@string/mpt" />
+
+            <RadioButton
+                android:id="@+id/cb_ooredoo"
+                style="@style/radio"
+                android:text="@string/ooredoo" />
+
+            <RadioButton
+                android:id="@+id/cb_telenol"
+                style="@style/radio"
+                android:text="@string/telenol" />
+
+            <RadioButton
+                android:id="@+id/cb_mytel"
+                style="@style/radio"
+                android:text="@string/mytel" />
+
+        </RadioGroup>
+
+        <com.frontiertechnologypartners.mykyat_topup.widget.MMTextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:hint="@string/phone_number"
+            app:boxStrokeColor="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_ph_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:drawableEnd="@drawable/ic_person_black_24dp" />
+        </com.frontiertechnologypartners.mykyat_topup.widget.MMTextInputLayout>
+
+        <org.mmtextview.components.MMTextView
+            style="@style/textView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/amount"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_stroke"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:chipSpacing="8dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/chip"
+                    android:text="@string/amt_1000" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/chip"
+                    android:text="@string/amt_2000" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/chip"
+                    android:text="@string/amt_3000" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/chip"
+                    android:text="@string/amt_4000" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/chip"
+                    android:text="@string/amt_5000" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp">
+
+            <Button
+                android:id="@+id/btn_1000"
+                style="@style/top_up_amount_button_style"
+                android:text="@string/amt_1000" />
+
+            <Button
+                android:id="@+id/btn_3000"
+                style="@style/top_up_amount_button_style"
+                android:text="@string/amt_3000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <Button
+                android:id="@+id/btn_5000"
+                style="@style/top_up_amount_button_style"
+                android:text="@string/amt_5000" />
+
+            <Button
+                android:id="@+id/btn_10000"
+                style="@style/top_up_amount_button_style"
+                android:text="@string/amt_10000" />
+
+        </LinearLayout>
+
+        <org.mmtextview.components.MMButton
+            android:id="@+id/btn_continue"
+            style="@style/button_continue"
+            android:text="@string/msg_continue" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
