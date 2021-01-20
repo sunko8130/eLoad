@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -67,6 +68,8 @@ public class LoginActivity extends BaseActivity {
     private LoginViewModel loginViewModel;
     private Boolean checked;
     private boolean isForgetPass;
+
+    private static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +137,8 @@ public class LoginActivity extends BaseActivity {
 
         //observe login data
         observeLoginData();
+
+        Log.d(TAG, "onCreate: ");
     }
 
     @OnClick(R.id.tv_forgot_password)
