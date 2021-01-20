@@ -32,7 +32,7 @@ public class ForgotPassViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        forgotPassResponse.setValue(ApiResponse.error(e));
+                        forgotPassResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

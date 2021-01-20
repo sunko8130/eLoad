@@ -33,7 +33,7 @@ public class ChangePassViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        changePassResponse.setValue(ApiResponse.error(e));
+                        changePassResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

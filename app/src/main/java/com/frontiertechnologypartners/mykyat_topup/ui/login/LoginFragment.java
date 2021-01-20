@@ -176,7 +176,7 @@ public class LoginFragment extends BaseFragment {
         loginViewModel.loginResponse.observe(this, this::consumeResponse);
     }
 
-    private void consumeResponse(ApiResponse apiResponse) {
+    private void consumeResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -204,7 +204,7 @@ public class LoginFragment extends BaseFragment {
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
 

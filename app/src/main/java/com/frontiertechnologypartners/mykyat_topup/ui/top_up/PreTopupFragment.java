@@ -214,7 +214,7 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
         topupViewModel.preTopUpResponse.observe(this, this::consumePreTopResponse);
     }
 
-    private void consumePreTopResponse(ApiResponse apiResponse) {
+    private void consumePreTopResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -250,7 +250,7 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:
@@ -258,7 +258,7 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
-    private void consumeResponse(ApiResponse apiResponse) {
+    private void consumeResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -275,7 +275,7 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

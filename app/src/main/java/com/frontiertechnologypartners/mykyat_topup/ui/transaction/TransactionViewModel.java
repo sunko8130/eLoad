@@ -35,7 +35,7 @@ public class TransactionViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        transactionResponse.setValue(ApiResponse.error(e));
+                        transactionResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }
@@ -53,7 +53,7 @@ public class TransactionViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        allOperatorsResponse.setValue(ApiResponse.error(e));
+                        allOperatorsResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

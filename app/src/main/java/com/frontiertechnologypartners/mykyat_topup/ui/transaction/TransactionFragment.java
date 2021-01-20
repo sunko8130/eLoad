@@ -289,7 +289,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
         transactionViewModel.allOperatorsResponse.observe(this, this::consumeAllOperators);
     }
 
-    private void consumeAllOperators(ApiResponse apiResponse) {
+    private void consumeAllOperators(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -318,7 +318,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:
@@ -330,7 +330,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
         transactionViewModel.transactionResponse.observe(this, this::consumeTransactionResponse);
     }
 
-    private void consumeTransactionResponse(ApiResponse apiResponse) {
+    private void consumeTransactionResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -383,7 +383,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

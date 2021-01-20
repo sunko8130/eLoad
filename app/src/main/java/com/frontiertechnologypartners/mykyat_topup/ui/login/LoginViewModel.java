@@ -32,7 +32,7 @@ public class LoginViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        loginResponse.setValue(ApiResponse.error(e));
+                        loginResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

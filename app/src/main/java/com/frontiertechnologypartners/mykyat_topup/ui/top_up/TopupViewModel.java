@@ -35,7 +35,7 @@ public class TopupViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        providersResponse.setValue(ApiResponse.error(e));
+                        providersResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }
@@ -53,7 +53,7 @@ public class TopupViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        preTopUpResponse.setValue(ApiResponse.error(e));
+                        preTopUpResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }
@@ -71,7 +71,7 @@ public class TopupViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        topUpResponse.setValue(ApiResponse.error(e));
+                        topUpResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }
@@ -89,7 +89,7 @@ public class TopupViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        svaResponse.setValue(ApiResponse.error(e));
+                        svaResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

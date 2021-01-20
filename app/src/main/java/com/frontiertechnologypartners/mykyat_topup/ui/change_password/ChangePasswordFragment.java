@@ -81,7 +81,7 @@ public class ChangePasswordFragment extends BaseFragment {
         changePassViewModel.changePassResponse.observe(this, this::consumeChangePassResponse);
     }
 
-    private void consumeChangePassResponse(ApiResponse apiResponse) {
+    private void consumeChangePassResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -105,7 +105,7 @@ public class ChangePasswordFragment extends BaseFragment {
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

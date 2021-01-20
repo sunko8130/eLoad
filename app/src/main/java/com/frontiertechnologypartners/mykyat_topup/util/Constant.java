@@ -32,6 +32,8 @@ public class Constant {
     public static final String MYTEL = "Mytel";
 
     public static final String FORGOT_PASS = "FORGOT_PASS";
+    public static final String NO_INTERNET_CONNECTION = "No internet connection";
+    public static final String UNKNOWN_ERROR = "Something wrong. Please try again later";
 
 
 }

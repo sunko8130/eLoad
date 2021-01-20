@@ -68,7 +68,7 @@ public class ForgotPasswordActivity extends BaseActivity implements MessageDialo
         forgotPassViewModel.forgotPassResponse.observe(this, this::consumeForgotPassword);
     }
 
-    private void consumeForgotPassword(ApiResponse apiResponse) {
+    private void consumeForgotPassword(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -92,7 +92,7 @@ public class ForgotPasswordActivity extends BaseActivity implements MessageDialo
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

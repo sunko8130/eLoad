@@ -18,10 +18,10 @@ public class ApiResponse<T> {
     @Nullable
     public final T data;
     @Nullable
-    public final Throwable message;
+    public final String message;
 
     private ApiResponse(@NonNull Status status, @Nullable T data,
-                        @Nullable Throwable message) {
+                        @Nullable String message) {
         this.status = status;
         this.data = data;
         this.message = message;
@@ -32,13 +32,12 @@ public class ApiResponse<T> {
         return new ApiResponse<>(SUCCESS, data, null);
     }
 
-
-    public static <T> ApiResponse<T> error(Throwable msg) {
+    public static <T> ApiResponse<T> error(String msg) {
         return new ApiResponse<>(ERROR, null, msg);
     }
 
     public static <T> ApiResponse<T> loading() {
         return new ApiResponse<>(LOADING, null, null);
     }
-    
+
 }

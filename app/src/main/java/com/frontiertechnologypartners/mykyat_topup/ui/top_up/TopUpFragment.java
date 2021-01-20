@@ -145,7 +145,7 @@ public class TopUpFragment extends BaseFragment implements MessageDialog.OnClick
         topupViewModel.topUpResponse.observe(this, this::consumeTopUpResponse);
     }
 
-    private void consumeTopUpResponse(ApiResponse apiResponse) {
+    private void consumeTopUpResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -168,7 +168,7 @@ public class TopUpFragment extends BaseFragment implements MessageDialog.OnClick
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:
@@ -180,7 +180,7 @@ public class TopUpFragment extends BaseFragment implements MessageDialog.OnClick
         topupViewModel.svaResponse.observe(this, this::consumeSVAResponse);
     }
 
-    private void consumeSVAResponse(ApiResponse apiResponse) {
+    private void consumeSVAResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case SUCCESS:
                 SVAResponse refreshAmount = (SVAResponse) apiResponse.data;
@@ -194,7 +194,7 @@ public class TopUpFragment extends BaseFragment implements MessageDialog.OnClick
             case ERROR:
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

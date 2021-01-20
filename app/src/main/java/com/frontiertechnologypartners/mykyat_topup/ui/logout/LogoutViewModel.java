@@ -33,7 +33,7 @@ public class LogoutViewModel extends BaseViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        logoutResponse.setValue(ApiResponse.error(e));
+                        logoutResponse.setValue(ApiResponse.error(getErrorMessage(e)));
                     }
                 }));
     }

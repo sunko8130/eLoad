@@ -121,7 +121,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         logoutViewModel.logoutResponse.observe(this, this::consumeLogoutResponse);
     }
 
-    private void consumeLogoutResponse(ApiResponse apiResponse) {
+    private void consumeLogoutResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case SUCCESS:
                 Logout logout = (Logout) apiResponse.data;
@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case ERROR:
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
             default:

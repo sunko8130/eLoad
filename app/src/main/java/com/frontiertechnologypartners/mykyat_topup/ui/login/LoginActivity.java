@@ -158,7 +158,7 @@ public class LoginActivity extends BaseActivity {
         loginViewModel.loginResponse.observe(this, this::consumeResponse);
     }
 
-    private void consumeResponse(ApiResponse apiResponse) {
+    private void consumeResponse(ApiResponse<?> apiResponse) {
         switch (apiResponse.status) {
             case LOADING:
                 loadingDialog.show();
@@ -192,7 +192,7 @@ public class LoginActivity extends BaseActivity {
                 loadingDialog.dismiss();
                 if (apiResponse.message != null) {
                     messageDialog.show();
-                    messageDialog.loadingMessage(apiResponse.message.getMessage());
+                    messageDialog.loadingMessage(apiResponse.message);
                 }
                 break;
 
