@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.frontiertechnologypartners.mykyat_topup.R;
@@ -50,7 +51,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -115,7 +118,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
     private String userId = "";
     private String fromDate = "";
     private String toDate = "";
-    private String operatorType = "";
+    private String operatorType = "All";
     private String phoneNumber = "";
     private Calendar calendar = Calendar.getInstance();
     private DatePickerDialog.OnDateSetListener fromDateListener;
@@ -141,6 +144,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mActivity.setTitle(R.string.transaction);
         ButterKnife.bind(this, view);
     }
 
@@ -178,11 +182,18 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
         mTransactionRv.setNestedScrollingEnabled(false);
         transactionAdapter = new TransactionAdapter(mContext, this);
 
-        //load all operators
-        transactionViewModel.getAllOperators();
 
+        ArrayAdapter<String> operatorAdapter = new ArrayAdapter<>(mContext, R.layout.dropdown_menu_popup_item, R.id.spinner_text,
+                Arrays.asList(getResources().getStringArray(R.array.operator_list)));
+        mOperatorSpinner.setAdapter(operatorAdapter);
+
+        //load all operators
+//        transactionViewModel.getAllOperators();
+//        observeOperators();
+
+        transactionHistory();
         observeTransaction();
-        observeOperators();
+
     }
 
     private void chooseDate() {
@@ -305,7 +316,7 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
                         mOperatorSpinner.setAdapter(operatorAdapter);
                         //load transaction
                         Operators operators = (Operators) mOperatorSpinner.getSelectedItem();
-                        operatorType = operators.getOperator();
+                        operatorType = operators.getOperatorName();
 
                         transactionHistory();
                     } else {
@@ -363,14 +374,12 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
                             mTransactionRv.setAdapter(transactionAdapter);
                             transactionAdapter.setItems(transactions);
                             mNoTransaction.setVisibility(View.GONE);
-                            mTransactionLabel.setVisibility(View.VISIBLE);
                             tvTotalAmount.setVisibility(View.VISIBLE);
                             tvTotalCommssion.setVisibility(View.VISIBLE);
                         } else {
                             tvTotalAmount.setVisibility(View.GONE);
                             tvTotalCommssion.setVisibility(View.GONE);
                             mNoTransaction.setVisibility(View.VISIBLE);
-                            mTransactionLabel.setVisibility(View.GONE);
                         }
 
                     } else {
@@ -400,8 +409,10 @@ public class TransactionFragment extends BaseFragment implements OnRecyclerItemC
         } else {
             phoneNumber = "";
         }
-        Operators operators = (Operators) mOperatorSpinner.getSelectedItem();
-        operatorType = operators.getOperator();
+//        Operators operators = (Operators) mOperatorSpinner.getSelectedItem();
+//        operatorType = operators.getOperatorName();
+
+        operatorType = mOperatorSpinner.getSelectedItem().toString();
 
         //date compare
         if (startDate != null && endDate != null) {

@@ -23,6 +23,7 @@ public class BaseViewModel extends ViewModel {
     public final MutableLiveData<ApiResponse<?>> forgotPassResponse = new MutableLiveData<>();
     public final MutableLiveData<ApiResponse<?>> logoutResponse = new MutableLiveData<>();
     public final MutableLiveData<ApiResponse<?>> allOperatorsResponse = new MutableLiveData<>();
+    public final MutableLiveData<ApiResponse<?>> totalSalesAndCommissionResponse = new MutableLiveData<>();
 
     @Override
     protected void onCleared() {

@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,9 +26,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,19 +53,24 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import static com.frontiertechnologypartners.mykyat_topup.util.Constant.CONTACT_REQUEST_CODE;
 import static com.frontiertechnologypartners.mykyat_topup.util.Constant.DRAWABLE_RIGHT;
+import static com.frontiertechnologypartners.mykyat_topup.util.Constant.MPT;
+import static com.frontiertechnologypartners.mykyat_topup.util.Constant.MYTEL;
+import static com.frontiertechnologypartners.mykyat_topup.util.Constant.OOREDOO;
+import static com.frontiertechnologypartners.mykyat_topup.util.Constant.TELENOL;
 import static com.frontiertechnologypartners.mykyat_topup.util.Constant.UPDATE_AMOUNT;
 import static com.frontiertechnologypartners.mykyat_topup.util.Constant.USER_DATA;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PreTopupFragment extends BaseFragment implements View.OnClickListener, OperatorCheckboxAdapter.OnItemClickListener {
+public class PreTopupFragment extends BaseFragment implements View.OnClickListener, TopUpAmountAdapter.OnItemClickListener {
 
     @BindView(R.id.et_ph_no)
     TextInputEditText etPhoneNo;
@@ -73,51 +78,58 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
     @BindView(R.id.chip_group)
     ChipGroup chipGroup;
 
-    @BindView(R.id.radio_group)
-    RadioGroup radioGroup;
-
     @BindView(R.id.operator_recycler_view)
     RecyclerView operatorRv;
 
-    @BindView(R.id.btn_1000)
-    Button btnAmount1000;
+    @BindView(R.id.mpt_layout)
+    LinearLayout mptLayout;
 
-    @BindView(R.id.btn_3000)
-    Button btnAmount3000;
+    @BindView(R.id.ooredoo_layout)
+    LinearLayout ooredooLayout;
 
-    @BindView(R.id.btn_5000)
-    Button btnAmount5000;
+    @BindView(R.id.telenol_layout)
+    LinearLayout telenolLayout;
 
-    @BindView(R.id.btn_10000)
-    Button btnAmount10000;
+    @BindView(R.id.mytel_layout)
+    LinearLayout mytelLayout;
 
-    @BindView(R.id.tv_user_name)
-    TextView tvUserName;
+    @BindView(R.id.iv_mpt)
+    ImageView ivMPT;
 
-    @BindView(R.id.tv_balance)
-    TextView tvBalance;
+    @BindView(R.id.iv_ooredoo)
+    ImageView ivOoredoo;
+
+    @BindView(R.id.iv_telenol)
+    ImageView ivTelenol;
+
+    @BindView(R.id.iv_mytel)
+    ImageView ivMytel;
+
+    @BindView(R.id.tv_mpt)
+    TextView tvMPT;
+
+    @BindView(R.id.tv_ooredoo)
+    TextView tvOoredoo;
+
+    @BindView(R.id.tv_telenol)
+    TextView tvTelenol;
+
+    @BindView(R.id.tv_mytel)
+    TextView tvMytel;
 
     @Inject
     ViewModelFactory viewModelFactory;
     private TopupViewModel topupViewModel;
     private String updateAmount = "";
 
-    private OperatorCheckboxAdapter operatorCheckboxAdapter;
+    private TopUpAmountAdapter operatorCheckboxAdapter;
     private String selectedProvider = "";
     private String selectedAmount = "";
     private String mobileNumber = "";
-    private Button selectAmountButton;
+    private ImageView selectOperator;
     private UserData userData;
     private String amount;
-
-    public static PreTopupFragment newInstance(String updateAmount) {
-
-        Bundle args = new Bundle();
-        args.putString(UPDATE_AMOUNT, updateAmount);
-        PreTopupFragment fragment = new PreTopupFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private ArrayList<String> availableAmounts = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -128,6 +140,7 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mActivity.setTitle(R.string.top_up);
         //init
         ButterKnife.bind(this, view);
     }
@@ -139,13 +152,10 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
 
         topupViewModel = ViewModelProviders.of(this, viewModelFactory).get(TopupViewModel.class);
 
-        //select operator
-        radioGroup.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-            RadioButton radioButton = radioGroup.findViewById(checkedId);
-            if (null != radioButton && checkedId > -1) {
-                Toast.makeText(getContext(), radioButton.getText(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        availableAmounts.add("1000");
+        availableAmounts.add("3000");
+        availableAmounts.add("5000");
+        availableAmounts.add("10000");
 
         //read phone contact
         etPhoneNo.setOnTouchListener((v, event) -> {
@@ -170,36 +180,25 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
         operatorRv.addItemDecoration(new GridSpacingItemDecoration(2, Util.dpToPx(mContext, 16), true));
         operatorRv.setHasFixedSize(true);
         operatorRv.setItemAnimator(new DefaultItemAnimator());
-        operatorCheckboxAdapter = new OperatorCheckboxAdapter(getActivity(), this);
+        operatorCheckboxAdapter = new TopUpAmountAdapter(getActivity(), this);
         operatorRv.setAdapter(operatorCheckboxAdapter);
+        operatorCheckboxAdapter.setItems(availableAmounts);
 
 //        List<Operator> availableOperator = availableOperator();
 
-        //top up available amount
-        btnAmount1000.setOnClickListener(this);
-        btnAmount3000.setOnClickListener(this);
-        btnAmount5000.setOnClickListener(this);
-        btnAmount10000.setOnClickListener(this);
-
-        if (getArguments() != null) {
-            updateAmount = getArguments().getString(UPDATE_AMOUNT);
-        }
+        //select operator
+        ivMPT.setOnClickListener(this);
+        ivOoredoo.setOnClickListener(this);
+        ivTelenol.setOnClickListener(this);
+        ivMytel.setOnClickListener(this);
 
         //get login user data
         Gson gson = new Gson();
         String loginUserData = prefs.fromPreference(USER_DATA, "");
         userData = gson.fromJson(loginUserData, UserData.class);
 
-        String[] balance = Util.convertAmountWithFormat(userData.getBalance()).split("\\.");
-
-        tvUserName.setText(getResources().getString(R.string.user_name, userData.getUser().getUsername()));
-        if (updateAmount.equals("")) {
-            tvBalance.setText(getResources().getString(R.string.user_balance, balance[0]));
-        } else {
-            tvBalance.setText(getResources().getString(R.string.user_balance, updateAmount));
-        }
         //load available providers
-        topupViewModel.getAvailableProviders();
+        topupViewModel.getAvailableProviders(userData.getId());
 
         observeProvidersData();
         observePreTopUpData();
@@ -228,9 +227,8 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
 
                         //pre top-up fragment
                         double detectAmount = preTopUpResponse.getData();
-//                        String provider = preTopUpResponse.getResponseMessage().getMessage();
                         Fragment topUpFragment = TopUpFragment.newInstance(mobileNumber,
-                                amount,
+                                selectedAmount,
                                 detectAmount,
                                 selectedProvider,
                                 String.valueOf(userData.getUser().getId()));
@@ -268,7 +266,42 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
                 ProvidersResponse providersResponse = (ProvidersResponse) apiResponse.data;
                 if (providersResponse != null) {
                     List<Operators> availableProviders = providersResponse.getData();
-                    operatorCheckboxAdapter.setItems(availableProviders);
+                    for (Operators operator : availableProviders) {
+                        switch (operator.getOperatorName()) {
+                            case MPT:
+                                tvMPT.setVisibility(View.VISIBLE);
+                                String[] mptPercent = String.valueOf(operator.getPercentage()).split("\\.");
+                                tvMPT.setText(getString(R.string.percent, mptPercent[0]));
+                                if (operator.getStatus() != 1) {
+                                    mptLayout.setVisibility(View.GONE);
+                                }
+                                break;
+                            case OOREDOO:
+                                tvOoredoo.setVisibility(View.VISIBLE);
+                                String[] ooredooPercent = String.valueOf(operator.getPercentage()).split("\\.");
+                                tvOoredoo.setText(getString(R.string.percent, ooredooPercent[0]));
+                                if (operator.getStatus() != 1) {
+                                    ooredooLayout.setVisibility(View.GONE);
+                                }
+                                break;
+                            case TELENOL:
+                                tvTelenol.setVisibility(View.VISIBLE);
+                                String[] telenolPercent = String.valueOf(operator.getPercentage()).split("\\.");
+                                tvTelenol.setText(getString(R.string.percent, telenolPercent[0]));
+                                if (operator.getStatus() != 1) {
+                                    telenolLayout.setVisibility(View.GONE);
+                                }
+                                break;
+                            case MYTEL:
+                                tvMytel.setVisibility(View.VISIBLE);
+                                String[] mytelPercent = String.valueOf(operator.getPercentage()).split("\\.");
+                                tvMytel.setText(getString(R.string.percent, mytelPercent[0]));
+                                if (operator.getStatus() != 1) {
+                                    mytelLayout.setVisibility(View.GONE);
+                                }
+                                break;
+                        }
+                    }
                 }
                 break;
             case ERROR:
@@ -314,11 +347,11 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
                 messageDialog.show();
                 messageDialog.loadingMessage(getString(R.string.mobile_and_provider_not_match));
             } else {
-                amount = selectAmountButton.getText().toString().trim().replace(",", "");
+//                amount = selectAmountButton.getText().toString().trim().replace(",", "");
                 topupViewModel.getPreTopUpData(String.valueOf(userData.getUser().getId()),
                         selectedProvider,
                         mobileNumber,
-                        amount
+                        selectedAmount
                 );
             }
         }
@@ -395,31 +428,47 @@ public class PreTopupFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        selectAmountButton = (Button) view;
+        selectOperator = (ImageView) view;
 
         // clear state
-        btnAmount1000.setSelected(false);
-        btnAmount1000.setPressed(false);
-        btnAmount3000.setSelected(false);
-        btnAmount3000.setPressed(false);
-        btnAmount5000.setSelected(false);
-        btnAmount5000.setPressed(false);
-        btnAmount10000.setSelected(false);
-        btnAmount10000.setPressed(false);
+        ivMPT.setSelected(false);
+        ivMPT.setPressed(false);
+        ivOoredoo.setSelected(false);
+        ivOoredoo.setPressed(false);
+        ivTelenol.setSelected(false);
+        ivTelenol.setPressed(false);
+        ivMytel.setSelected(false);
+        ivMytel.setPressed(false);
 
         // change state
-        selectAmountButton.setSelected(true);
-        selectAmountButton.setPressed(false);
+        selectOperator.setSelected(true);
+        selectOperator.setPressed(false);
 
-        selectedAmount = selectAmountButton.getText().toString();
+        int id = selectOperator.getId();
 
-        Toast.makeText(getActivity(), "amount: " + selectAmountButton.getText(), Toast.LENGTH_SHORT).show();
+        switch (id) {
+            case R.id.iv_mpt:
+                selectedProvider = "MPT";
+                break;
+            case R.id.iv_ooredoo:
+                selectedProvider = "Ooredoo";
+                break;
+            case R.id.iv_telenol:
+                selectedProvider = "Telenol";
+                break;
+            case R.id.iv_mytel:
+                selectedProvider = "Mytel";
+                break;
+            default:
+                break;
+        }
+
+        Toast.makeText(getActivity(), selectedProvider, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onItemClick(int position) {
-        Operators operator = operatorCheckboxAdapter.getItem(position);
-        selectedProvider = operator.getOperator();
-        Toast.makeText(getContext(), "click " + operator.getOperator(), Toast.LENGTH_SHORT).show();
+        selectedAmount = operatorCheckboxAdapter.getItem(position);
+        Toast.makeText(getContext(), "click " + selectedAmount, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,33 +1,43 @@
 package com.frontiertechnologypartners.mykyat_topup.model;
 
-
 import com.google.gson.annotations.SerializedName;
 
-public class Operators {
+public class Operators{
 
-	@SerializedName("id")
-	private int id;
+	@SerializedName("percentage")
+	private double percentage;
 
-	@SerializedName("operator")
-	private String operator;
+	@SerializedName("operatorId")
+	private int operatorId;
+
+	@SerializedName("operatorName")
+	private String operatorName;
 
 	@SerializedName("status")
 	private int status;
 
-	public void setId(int id){
-		this.id = id;
+	public void setPercentage(double percentage){
+		this.percentage = percentage;
 	}
 
-	public int getId(){
-		return id;
+	public double getPercentage(){
+		return percentage;
 	}
 
-	public void setOperator(String operator){
-		this.operator = operator;
+	public void setOperatorId(int operatorId){
+		this.operatorId = operatorId;
 	}
 
-	public String getOperator(){
-		return operator;
+	public int getOperatorId(){
+		return operatorId;
+	}
+
+	public void setOperatorName(String operatorName){
+		this.operatorName = operatorName;
+	}
+
+	public String getOperatorName(){
+		return operatorName;
 	}
 
 	public void setStatus(int status){
@@ -37,14 +47,4 @@ public class Operators {
 	public int getStatus(){
 		return status;
 	}
-
-	@Override
- 	public String toString(){
-		return 
-			"Operators{" +
-			"id = '" + id + '\'' + 
-			",operator = '" + operator + '\'' + 
-			",status = '" + status + '\'' + 
-			"}";
-		}
 }

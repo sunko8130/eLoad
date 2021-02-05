@@ -31,6 +31,7 @@ import com.frontiertechnologypartners.mykyat_topup.network.ApiResponse;
 import com.frontiertechnologypartners.mykyat_topup.ui.base.BaseActivity;
 import com.frontiertechnologypartners.mykyat_topup.ui.change_language.LanguageChangeAdapter;
 import com.frontiertechnologypartners.mykyat_topup.ui.change_password.ChangePasswordFragment;
+import com.frontiertechnologypartners.mykyat_topup.ui.home.HomeFragment;
 import com.frontiertechnologypartners.mykyat_topup.ui.logout.LogoutViewModel;
 import com.frontiertechnologypartners.mykyat_topup.ui.top_up.PreTopupFragment;
 import com.frontiertechnologypartners.mykyat_topup.ui.transaction.TransactionFragment;
@@ -73,6 +74,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private String defLanguage;
     private BottomSheetDialog languageDialog;
     private int langCheck;
+    private int state = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,13 +107,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
         setTitleMap();
         navView.setNavigationItemSelectedListener(this);
-        setTitleFragment(mFragmentSelectedMap.get(R.id.nav_topUp));
-        displaySelectedScreen(R.id.nav_topUp);
+        setTitleFragment(mFragmentSelectedMap.get(R.id.nav_home));
+        displaySelectedScreen(R.id.nav_home);
         observeLogout();
     }
 
     private void setTitleMap() {
         mFragmentSelectedMap = new SparseIntArray();
+        mFragmentSelectedMap.append(R.id.nav_home, R.string.home);
         mFragmentSelectedMap.append(R.id.nav_topUp, R.string.top_up);
         mFragmentSelectedMap.append(R.id.nav_transaction, R.string.transaction);
         mFragmentSelectedMap.append(R.id.nav_change_password, R.string.change_password);
@@ -154,33 +157,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return true;
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        final MenuItem changeLangMenuItem = menu.findItem(R.id.menu_lang);
-        LinearLayout rootView = (LinearLayout) changeLangMenuItem.getActionView();
-
-        ImageView langLogo = rootView.findViewById(R.id.img_language_logo);
-        MMTextView langName = rootView.findViewById(R.id.tv_language);
-
-        //change language
-        if (defLanguage.equals(MYANMAR)) {
-            langLogo.setImageResource(R.drawable.ic_myanmar_flag);
-            langName.setText(MYANMAR_MM);
-        } else if (defLanguage.equals(ENGLISH)) {
-            langLogo.setImageResource(R.drawable.ic_english_flag);
-            langName.setText(ENGLISH_EN);
-        }
-
-        rootView.setOnClickListener(v -> onOptionsItemSelected(changeLangMenuItem));
-
-        return super.onPrepareOptionsMenu(menu);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_lang) {
-            languageChangeDialog();
-            return true;
+        switch (item.getItemId()) {
+            case R.id.menu_my:
+                setNewLocale(MYANMAR);
+                return true;
+            case R.id.menu_en:
+                setNewLocale(ENGLISH);
+                return true;
         }
         return super.onOptionsItemSelected(item);
 
@@ -233,8 +219,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         navView.setCheckedItem(itemId);
         Fragment fragment = null;
         switch (itemId) {
+            case R.id.nav_home:
+                fragment = HomeFragment.newInstance(updateAmount);
+                break;
             case R.id.nav_topUp:
-                fragment = PreTopupFragment.newInstance(updateAmount);
+                fragment = new PreTopupFragment();
                 break;
             case R.id.nav_transaction:
                 fragment = new TransactionFragment();
@@ -271,7 +260,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else {
             Fragment currentFragment = getSupportFragmentManager()
                     .findFragmentById(R.id.frame);
-            if (currentFragment instanceof PreTopupFragment) {
+            if (currentFragment instanceof HomeFragment) {
                 prefs.clearPreferences();
                 finishAffinity();
             } else {
@@ -280,8 +269,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                     getSupportFragmentManager().popBackStack();
                 } else {
                     navView.getMenu().getItem(0).setChecked(true);
-                    setTitleFragment(mFragmentSelectedMap.get(R.id.nav_topUp));
-                    displaySelectedScreen(R.id.nav_topUp);
+                    setTitleFragment(mFragmentSelectedMap.get(R.id.nav_home));
+                    displaySelectedScreen(R.id.nav_home);
                 }
             }
         }

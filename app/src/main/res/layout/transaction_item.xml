@@ -34,6 +34,8 @@
                     <org.mmtextview.components.MMTextView
                         android:id="@+id/tv_transaction_provider"
                         style="@style/transaction_text_view"
+                        android:textSize="18sp"
+                        android:textStyle="bold|italic"
                         tool:text="TextView" />
 
                 </TableRow>
@@ -45,10 +47,15 @@
                         style="@style/transaction_text_view"
                         tool:text="TextView" />
 
+                </TableRow>
+
+                <TableRow android:layout_marginTop="2dp">
+
                     <org.mmtextview.components.MMTextView
                         android:id="@+id/tv_transaction_date"
                         style="@style/transaction_text_view"
                         tool:text="TextView" />
+
                 </TableRow>
 
             </TableLayout>

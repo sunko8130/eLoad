@@ -22,8 +22,8 @@ public class TopupViewModel extends BaseViewModel {
         this.networkRepository = networkRepository;
     }
 
-    void getAvailableProviders(){
-        disposable.add(networkRepository.getProviders()
+    void getAvailableProviders(int userId){
+        disposable.add(networkRepository.getProviders(userId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(__ -> providersResponse.setValue(ApiResponse.loading()))

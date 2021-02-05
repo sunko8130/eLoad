@@ -1,5 +1,6 @@
 package com.frontiertechnologypartners.mykyat_topup.ui.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +21,13 @@ public class BaseFragment extends DaggerFragment {
     protected MessageDialog messageDialog;
     protected PreferenceUtils prefs;
     protected Context mContext;
+    protected Activity mActivity;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = context;
+        mActivity = getActivity();
     }
 
     @Override
@@ -34,7 +37,6 @@ public class BaseFragment extends DaggerFragment {
         //init loading
         loadingDialog = new LoadingDialog(mContext, R.style.CustomProgressBarTheme);
         messageDialog = new MessageDialog(mContext);
-
         prefs = new PreferenceUtils(getActivity());
     }
 
@@ -42,7 +44,7 @@ public class BaseFragment extends DaggerFragment {
         App.localeManager.persistLanguage(language);
         //reload parent activity
         new Handler().post(() -> {
-            if (getActivity()!=null){
+            if (getActivity() != null) {
                 Intent intent = getActivity().getIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
                         | Intent.FLAG_ACTIVITY_NO_ANIMATION);

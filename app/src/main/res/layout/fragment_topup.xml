@@ -15,72 +15,132 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_stroke"
+            android:padding="8dp">
 
-            <org.mmtextview.components.MMTextView
-                android:id="@+id/tv_user_name"
-                style="@style/textView"
+            <LinearLayout
+                android:id="@+id/mpt_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:textSize="20sp"
-                tools:text="Hi, Sun Ko" />
+                android:orientation="vertical">
 
-            <org.mmtextview.components.MMTextView
-                android:id="@+id/tv_balance"
-                style="@style/textView"
-                android:layout_marginTop="2dp"
+                <ImageView
+                    android:id="@+id/iv_mpt"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_selector"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_mpt"
+                    android:visibility="visible" />
+
+                <org.mmtextview.components.MMTextView
+                    android:id="@+id/tv_mpt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4%"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_red_900"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ooredoo_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:textSize="20sp"
-                tools:text="balance - 20000" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_ooredoo"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_selector"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_ooredoo"
+                    android:visibility="visible" />
+
+                <org.mmtextview.components.MMTextView
+                    android:id="@+id/tv_ooredoo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4%"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_red_900"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/telenol_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_telenol"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_selector"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_telenol"
+                    android:visibility="visible" />
+
+                <org.mmtextview.components.MMTextView
+                    android:id="@+id/tv_telenol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4%"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_red_900"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mytel_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_mytel"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_selector"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_mytel"
+                    android:visibility="visible" />
+
+                <org.mmtextview.components.MMTextView
+                    android:id="@+id/tv_mytel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4%"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_red_900"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/operator_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/bg_stroke"
-            android:visibility="visible" />
-
-
-        <RadioGroup
-            android:id="@+id/radio_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/bg_stroke"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:stretchColumns="*"
-            android:visibility="gone">
-
-            <RadioButton
-                android:id="@+id/cb_mpt"
-                style="@style/radio"
-                android:text="@string/mpt" />
-
-            <RadioButton
-                android:id="@+id/cb_ooredoo"
-                style="@style/radio"
-                android:text="@string/ooredoo" />
-
-            <RadioButton
-                android:id="@+id/cb_telenol"
-                style="@style/radio"
-                android:text="@string/telenol" />
-
-            <RadioButton
-                android:id="@+id/cb_mytel"
-                style="@style/radio"
-                android:text="@string/mytel" />
-
-        </RadioGroup>
 
         <com.frontiertechnologypartners.mykyat_topup.widget.MMTextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -95,9 +155,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_ph_no"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:drawableEnd="@drawable/ic_person_black_24dp" />
+                android:layout_height="50dp"
+                android:drawableEnd="@drawable/ic_person_black_24dp"
+                android:inputType="number" />
         </com.frontiertechnologypartners.mykyat_topup.widget.MMTextInputLayout>
 
         <org.mmtextview.components.MMTextView
@@ -106,6 +166,16 @@
             android:layout_marginTop="10dp"
             android:text="@string/amount"
             android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/operator_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_stroke"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,42 +220,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp">
-
-            <Button
-                android:id="@+id/btn_1000"
-                style="@style/top_up_amount_button_style"
-                android:text="@string/amt_1000" />
-
-            <Button
-                android:id="@+id/btn_3000"
-                style="@style/top_up_amount_button_style"
-                android:text="@string/amt_3000" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
-
-            <Button
-                android:id="@+id/btn_5000"
-                style="@style/top_up_amount_button_style"
-                android:text="@string/amt_5000" />
-
-            <Button
-                android:id="@+id/btn_10000"
-                style="@style/top_up_amount_button_style"
-                android:text="@string/amt_10000" />
-
-        </LinearLayout>
 
         <org.mmtextview.components.MMButton
             android:id="@+id/btn_continue"

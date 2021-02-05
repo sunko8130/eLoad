@@ -41,15 +41,17 @@ public class TransactionViewHolder extends BaseViewHolder<Transaction, OnRecycle
     @Override
     public void onBind(Transaction item) {
         tvTransactionProvider.setText(mContext.getResources()
-                .getString(R.string.transaction_provider, item.getUsecase()));
+                .getString(R.string.transaction_provider, item.getOperator()));
         tvTransactionMobile.setText(mContext.getResources()
                 .getString(R.string.transaction_mobile, item.getPhoneNo()));
         String[] topUpAmount = Util.convertAmountWithFormat(item.getAmount()).split("\\.");
         tvTransactionAmount.setText(mContext.getResources()
                 .getString(R.string.transaction_amount, topUpAmount[0]));
-        String dateFormat = "dd/MM/yyyy";
+        String dateFormat = "dd-MM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+//        tvTransactionDate.setText(mContext.getResources()
+//                .getString(R.string.transaction_date, sdf.format(item.getCreatedDate())));
         tvTransactionDate.setText(mContext.getResources()
-                .getString(R.string.transaction_date, sdf.format(item.getCreatedDate())));
+                .getString(R.string.transaction_date, item.getCreatedDate()));
     }
 }

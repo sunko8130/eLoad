@@ -187,7 +187,7 @@
     //top up amount button style
 
     <style name="top_up_amount_button_style">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_margin">16dp</item>
         <item name="android:textColor">@color/md_white_1000</item>

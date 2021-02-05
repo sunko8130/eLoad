@@ -32,9 +32,12 @@
     <string name="transaction">Transaction</string>
     <string name="user_name">Hi, %1$s</string>
     <string name="user_balance">Balance - %1$s Ks</string>
+    <string name="total_sales">%1$s Ks</string>
+    <string name="total_commissions">%1$s Ks</string>
 
     //available operator
     <string-array name="operator_list">
+        <item>All</item>
         <item>MPT</item>
         <item>Ooredoo</item>
         <item>Telenol</item>
@@ -95,5 +98,10 @@
     <string name="total_amount"><![CDATA[Total Sales - <font color=#1E88E5>%1$s Ks</font>]]></string>
     <string name="total_commission"><![CDATA[Total Commission - <font color=#1E88E5>%1$s Ks</font>]]></string>
     <string name="date_compare">To Date must be greater than From Date</string>
+    <string name="percent">%1$s%%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_sales_label">Total Sales</string>
+    <string name="total_commission_label">Total Commission</string>
 
 </resources>

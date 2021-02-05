@@ -98,7 +98,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_ph_no"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:drawableEnd="@drawable/ic_person_black_24dp"
                         android:inputType="number" />
                 </com.frontiertechnologypartners.mykyat_topup.widget.MMTextInputLayout>

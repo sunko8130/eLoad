@@ -53,7 +53,7 @@ public class OperatorsAdapter extends ArrayAdapter<Operators> {
             ButterKnife.bind(this, v);
         }
         if (operator != null) {
-            spinnerText.setText(operator.getOperator());
+            spinnerText.setText(operator.getOperatorName());
         }
         return v;
     }

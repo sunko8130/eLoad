@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <color name="colorPrimary">#3F51B5</color>-->
-    <color name="colorPrimary">@color/md_blue_600</color>
-<!--    <color name="colorPrimaryDark">#303F9F</color>-->
-    <color name="colorPrimaryDark">@color/md_blue_500</color>
-<!--    <color name="colorAccent">#FF4081</color>-->
-    <color name="colorAccent">@color/md_orange_500</color>
+    <color name="colorPrimary">@color/md_light_blue_A700</color>
+    <color name="colorPrimaryDark">@color/md_light_blue_A400</color>
+    <color name="colorAccent">@color/md_cyan_500</color>
 
     <!-- google's material design colours from
   http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
@@ -217,6 +214,7 @@
     <color name="md_yellow_A200">#FFFF00</color>
     <color name="md_yellow_A400">#FFEA00</color>
     <color name="md_yellow_A700">#FFD600</color>
+    <color name="md_yellow_B700">#FFDE03</color>
 
     <!--amber-->
     <color name="md_amber_50">#FFF8E1</color>

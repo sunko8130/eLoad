@@ -1,6 +1,7 @@
 package com.frontiertechnologypartners.mykyat_topup.di.module;
 
 import com.frontiertechnologypartners.mykyat_topup.ui.change_password.ChangePasswordFragment;
+import com.frontiertechnologypartners.mykyat_topup.ui.home.HomeFragment;
 import com.frontiertechnologypartners.mykyat_topup.ui.login.LoginFragment;
 import com.frontiertechnologypartners.mykyat_topup.ui.top_up.TopUpFragment;
 import com.frontiertechnologypartners.mykyat_topup.ui.top_up.PreTopupFragment;
@@ -26,5 +27,8 @@ public abstract class MainFragmentBindingModule {
 
     @ContributesAndroidInjector
     abstract LoginFragment provideLoginFragment();
+
+    @ContributesAndroidInjector
+    abstract HomeFragment provideHomeFragment();
 
 }

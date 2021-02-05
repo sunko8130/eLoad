@@ -32,13 +32,13 @@
     <string name="login_password_require">သင်၏ လျှို့ဝှက်အမှတ်ဖြည့်ပါ</string>
     <string name="transaction">ဖုန်းဘေအရောင်းစာရင်းများ</string>
     <string name="user_name">Hi, %1$s</string>
-    <string name="user_balance">ငွေပမာဏ - %1$s ကျပ်</string>
+    <string name="user_balance">ငွေလက်ကျန် - %1$s ကျပ်</string>
     <string name="amount_require_msg">ပမာဏကိုရွေးချယ်ပါ</string>
     <string name="mobile_require_msg">ဖုန်းနံပါတ်ထည့်ပါ</string>
     <string name="operator_require_msg">အော်ပရေတာကိုရွေးပါ</string>
     <string name="top_up_mobile"><![CDATA[ဖုန်းနံပါတ်: <font color=#1E88E5>%1$s</font>]]></string>
-    <string name="top_up_amount"><![CDATA[ငွေပမာဏကိုဖြည့်ပါ: <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
-    <string name="top_up_detect_amount"><![CDATA[<font color=#1E88E5>%1$s ကျပ်</font>ကို သင်၏ myKyat အကောင့်မှနှုတ်ယူလိမ့်မည်]]></string>
+    <string name="top_up_amount"><![CDATA[ငွေပမာဏ: <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
+    <string name="top_up_detect_amount"><![CDATA[<font color=#1E88E5>%1$s </font>ကျပ်ကို သင်၏အကောင့်မှနှုတ်ယူလိမ့်မည်]]></string>
     <string name="transaction_history">ဖုန်းဘေအရောင်းစာရင်းများ</string>
     <string name="have_no_transaction">ဖုန်းဘေအရောင်းစာရင်းမရှိပါ</string>
     <string name="transaction_provider"><![CDATA[<font color=#1E88E5>%1$s</font>]]></string>
@@ -75,11 +75,18 @@
     <string name="total_amount"><![CDATA[စုစုပေါင်း ရောင်းရငွေ - <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
     <string name="total_commission"><![CDATA[စုစုပေါင်းကော်မရှင် - <font color=#1E88E5>%1$s ကျပ်</font>]]></string>
     <string name="date_compare">To Date သည် From Date ထက်ကြီးရမည်</string>
-    //top up available amount
-    <integer-array name="operator_list">
-        <item>1000</item>
-        <item>3000</item>
-        <item>5000</item>
-        <item>10000</item>
-    </integer-array>
+    <string name="percent">%1$s%%</string>
+    <string name="total_sales_label">စုစုပေါင်း ရောင်းရငွေ</string>
+    <string name="total_commission_label">စုစုပေါင်းကော်မရှင်</string>
+    <string name="total_sales">%1$s ကျပ်</string>
+    <string name="total_commissions">%1$s ကျပ်</string>
+
+    //available operator
+    <string-array name="operator_list">
+        <item>All</item>
+        <item>MPT</item>
+        <item>Ooredoo</item>
+        <item>Telenol</item>
+        <item>Mytel</item>
+    </string-array>
 </resources>

@@ -8,6 +8,7 @@ import com.frontiertechnologypartners.mykyat_topup.model.ProvidersResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.ResponseMessage;
 import com.frontiertechnologypartners.mykyat_topup.model.SVAResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.TopUpResponse;
+import com.frontiertechnologypartners.mykyat_topup.model.TotalSalesTotalCommissionResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.TransactionResponse;
 import com.frontiertechnologypartners.mykyat_topup.network.RetrofitService;
 
@@ -30,8 +31,8 @@ public class NetworkRepository {
         return retrofitService.getLoginUserData(username, password);
     }
 
-    public Single<ProvidersResponse> getProviders() {
-        return retrofitService.getProviders();
+    public Single<ProvidersResponse> getProviders(int userId) {
+        return retrofitService.getProviders(userId);
     }
 
     public Single<ProvidersResponse> getAllOperators() {
@@ -64,5 +65,9 @@ public class NetworkRepository {
 
     public Single<ChangePasswordResponse> forgotPassword(String mobile) {
         return retrofitService.forgotPassword(mobile);
+    }
+
+    public Single<TotalSalesTotalCommissionResponse> totalSalesAndCommission(int userId) {
+        return retrofitService.totalSalesAndCommission(userId);
     }
 }

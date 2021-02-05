@@ -8,6 +8,7 @@ import com.frontiertechnologypartners.mykyat_topup.model.ProvidersResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.ResponseMessage;
 import com.frontiertechnologypartners.mykyat_topup.model.SVAResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.TopUpResponse;
+import com.frontiertechnologypartners.mykyat_topup.model.TotalSalesTotalCommissionResponse;
 import com.frontiertechnologypartners.mykyat_topup.model.TransactionResponse;
 
 import java.util.Map;
@@ -25,8 +26,9 @@ public interface RetrofitService {
     Single<LoginResponse> getLoginUserData(@Field("username") String username,
                                            @Field("password") String password);
 
+    @FormUrlEncoded
     @POST("providers")
-    Single<ProvidersResponse> getProviders();
+    Single<ProvidersResponse> getProviders(@Field("user_id") int userId);
 
     @POST("getAllOperators")
     Single<ProvidersResponse> getAllOperators();
@@ -56,7 +58,7 @@ public interface RetrofitService {
     @POST("user/change_password")
     Single<ChangePasswordResponse> changePassword(@Field("password") String password,
                                                   @Field("user_id") int userId,
-                                                  @Field("currentpassword")String currentPassword);
+                                                  @Field("currentpassword") String currentPassword);
 
     @FormUrlEncoded
     @POST("user/forgot_password")
@@ -65,5 +67,9 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("user/logout")
     Single<Logout> logout(@Field("user_id") int userId);
+
+    @FormUrlEncoded
+    @POST("snc")
+    Single<TotalSalesTotalCommissionResponse> totalSalesAndCommission(@Field("user_id") int userId);
 
 }

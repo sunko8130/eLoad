@@ -5,6 +5,7 @@ import com.frontiertechnologypartners.mykyat_topup.di.keys.ViewModelKey;
 import com.frontiertechnologypartners.mykyat_topup.model.Transaction;
 import com.frontiertechnologypartners.mykyat_topup.ui.change_password.ChangePassViewModel;
 import com.frontiertechnologypartners.mykyat_topup.ui.forgot_password.ForgotPassViewModel;
+import com.frontiertechnologypartners.mykyat_topup.ui.home.HomeViewModel;
 import com.frontiertechnologypartners.mykyat_topup.ui.login.LoginViewModel;
 import com.frontiertechnologypartners.mykyat_topup.ui.logout.LogoutViewModel;
 import com.frontiertechnologypartners.mykyat_topup.ui.top_up.TopupViewModel;
@@ -48,6 +49,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ForgotPassViewModel.class)
     abstract ViewModel bindForgotPassViewModel(ForgotPassViewModel forgotPassViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel.class)
+    abstract ViewModel bindHomeViewModel(HomeViewModel homeViewModel);
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelFactory factory);

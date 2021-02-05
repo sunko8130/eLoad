@@ -2,7 +2,8 @@ package com.frontiertechnologypartners.mykyat_topup.util;
 
 public class Constant {
 
-    public static final String BASE_URL = "http://203.81.80.206/etopup/";
+//    public static final String BASE_URL = "http://203.81.80.206/etopup/";
+    public static final String BASE_URL = "http://10.20.10.209:9090/mytopup/";
     public static final int CONNECTION_TIMEOUT = 600000;
 
     public static final int DRAWABLE_LEFT = 0;

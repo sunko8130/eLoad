@@ -98,6 +98,7 @@ public class TopUpFragment extends BaseFragment implements MessageDialog.OnClick
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mActivity.setTitle(R.string.home);
         ButterKnife.bind(this, view);
     }
 

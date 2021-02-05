@@ -16,11 +16,14 @@ public class Transaction {
 	@SerializedName("commissionAmount")
 	private double commissionAmount;
 
-	@SerializedName("usecase")
-	private String usecase;
+	@SerializedName("operator")
+	private String operator;
+
+//	@SerializedName("createdDate")
+//	private long createdDate;
 
 	@SerializedName("createdDate")
-	private long createdDate;
+	private String createdDate;
 
 	@SerializedName("balance")
 	private double balance;
@@ -61,21 +64,21 @@ public class Transaction {
 		return commissionRate;
 	}
 
-	public void setUsecase(String usecase){
-		this.usecase = usecase;
+	public String getOperator() {
+		return operator;
 	}
 
-	public String getUsecase(){
-		return usecase;
+	public void setOperator(String operator) {
+		this.operator = operator;
 	}
 
-	public void setCreatedDate(long createdDate){
-		this.createdDate = createdDate;
-	}
-
-	public long getCreatedDate(){
-		return createdDate;
-	}
+	//	public void setCreatedDate(long createdDate){
+//		this.createdDate = createdDate;
+//	}
+//
+//	public long getCreatedDate(){
+//		return createdDate;
+//	}
 
 	public void setBalance(double balance){
 		this.balance = balance;
@@ -125,6 +128,14 @@ public class Transaction {
 		this.commissionAmount = commissionAmount;
 	}
 
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
 	@Override
  	public String toString(){
 		return 
@@ -132,7 +143,7 @@ public class Transaction {
 			"realAmount = '" + realAmount + '\'' + 
 			",amount = '" + amount + '\'' + 
 			",commissionRate = '" + commissionRate + '\'' + 
-			",usecase = '" + usecase + '\'' + 
+			",usecase = '" + operator + '\'' +
 			",createdDate = '" + createdDate + '\'' + 
 			",balance = '" + balance + '\'' + 
 			",id = '" + id + '\'' + 
